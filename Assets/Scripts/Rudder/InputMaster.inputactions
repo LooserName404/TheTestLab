@@ -1,0 +1,52 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "Rudder",
+            "id": "8df6ccdc-ce20-48d0-bb18-ad02e66db1a7",
+            "actions": [
+                {
+                    "name": "HoldRudder",
+                    "type": "Button",
+                    "id": "ade35e81-2a05-488b-91e2-0ba064de39a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "PassThrough",
+                    "id": "dc15e623-e977-4190-9e47-722f9c928da9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7f431194-d343-404a-82a1-ac45f1c930de",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldRudder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e859bd9-87f0-41d7-b0bb-f4a077602d92",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

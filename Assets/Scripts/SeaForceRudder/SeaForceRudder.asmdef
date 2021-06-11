@@ -1,0 +1,16 @@
+{
+    "name": "SeaForceRudder",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6a76d9ea65a2fd545a5e1717dca4e1a2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
