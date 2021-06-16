@@ -1,23 +1,27 @@
 ﻿using System;
+using Rudder.Wrappers;
 using UnityEngine;
 
 namespace Rudder
 {
     public class RudderScreenPositionHandler
     {
-        private readonly ICameraWrapper _cameraWrapper;
+        private readonly IGetWorldToScreenPoint _getWorldToScreenPoint;
+        private readonly IGetRenderMode _canvas;
 
-        public RudderScreenPositionHandler(ICameraWrapper cameraWrapper)
+        public RudderScreenPositionHandler(IGetWorldToScreenPoint getWorldToScreenPoint, IGetRenderMode canvas)
         {
-            _cameraWrapper = cameraWrapper;
+            _getWorldToScreenPoint = getWorldToScreenPoint;
+            _canvas = canvas;
         }
-        public Vector3 GetPosition(Vector3 position, ICanvasWrapper canvas)
+
+        public Vector3 GetPosition(Vector3 position)
         {
-            return canvas.RenderMode switch
+            return _canvas.RenderMode switch
             {
-                RenderMode.ScreenSpaceCamera => _cameraWrapper.WorldToScreenPoint(position),
+                RenderMode.ScreenSpaceCamera => _getWorldToScreenPoint.WorldToScreenPoint(position),
                 RenderMode.ScreenSpaceOverlay => position,
-                _ => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
             };
         }
     }

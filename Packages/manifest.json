@@ -6,6 +6,7 @@
     "com.unity.ide.vscode": "1.2.3",
     "com.unity.inputsystem": "1.0.2",
     "com.unity.test-framework": "1.1.24",
+    "com.unity.testtools.codecoverage": "1.1.0",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.5.5",
     "com.unity.toolchain.win-x86_64-linux-x86_64": "0.1.20-preview",
@@ -44,6 +45,6 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "testables": [
-	"com.unity.inputsystem"
+    "com.unity.inputsystem"
   ]
 }

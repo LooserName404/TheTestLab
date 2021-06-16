@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Rudder;
+using Rudder.Wrappers;
 using UnityEngine;
 
 namespace Tests.EditMode
@@ -13,16 +14,16 @@ namespace Tests.EditMode
         {
             // ARRANGE
             var rudder = new Mock<IRudder>();
-            var canvas = new Mock<ICanvasWrapper>();
-            var camera = new Mock<ICameraWrapper>();
-            var screenPositionHandler = new RudderScreenPositionHandler(camera.Object);
+            var canvas = new Mock<IGetRenderMode>();
+            var camera = new Mock<IGetWorldToScreenPoint>();
+            var screenPositionHandler = new RudderScreenPositionHandler(camera.Object, canvas.Object);
             var expected = new Vector3(42, 42, 42);
 
             rudder.Setup(r => r.Position).Returns(expected);
             canvas.Setup(c => c.RenderMode).Returns(RenderMode.ScreenSpaceOverlay);
 
             // ACT
-            var actual = screenPositionHandler.GetPosition(rudder.Object.Position, canvas.Object);
+            var actual = screenPositionHandler.GetPosition(rudder.Object.Position);
             
             // ASSERT
             Assert.AreEqual(expected, actual);
@@ -33,9 +34,9 @@ namespace Tests.EditMode
         {
             // ARRANGE
             var rudder = new Mock<IRudder>();
-            var canvas = new Mock<ICanvasWrapper>();
-            var camera = new Mock<ICameraWrapper>();
-            var screenPositionHandler = new RudderScreenPositionHandler(camera.Object);
+            var canvas = new Mock<IGetRenderMode>();
+            var camera = new Mock<IGetWorldToScreenPoint>();
+            var screenPositionHandler = new RudderScreenPositionHandler(camera.Object, canvas.Object);
             
             var position = new Vector3(42, 42, 42);
             var expected = position * (float)Math.PI;
@@ -46,7 +47,7 @@ namespace Tests.EditMode
             canvas.Setup(c => c.RenderMode).Returns(RenderMode.ScreenSpaceCamera);
 
             // ACT
-            var actual = screenPositionHandler.GetPosition(rudder.Object.Position, canvas.Object);
+            var actual = screenPositionHandler.GetPosition(rudder.Object.Position);
             
             // ASSERT
             Assert.AreEqual(expected, actual);
