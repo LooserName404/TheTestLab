@@ -1,4 +1,5 @@
-﻿using Rudder.Input;
+﻿using System;
+using Rudder.Input;
 using Rudder.Physics;
 using UnityEngine;
 using Zenject;
@@ -36,6 +37,10 @@ namespace Rudder
             var angleVector = ((Vector3) position - _rudderScreenPosition).normalized;
 
             transform.rotation = _angle.Calculate(angleVector);
+
+            Func<int, int> xf;
+            xf = (x) => x * x;
+            xf?.Invoke(2);
         }
     }
 }
